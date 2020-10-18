@@ -1,8 +1,9 @@
 //
 //          AUTHOR: ALI BARAN YENI
-//      DEPARTMENT: COMPUTER ENGINEERING 
+//      DEPARTMENT: COMPUTER ENGINEERING
 //  STUDENT NUMBER: ********************
 //
+//       EDITED AT: 18 Oct 19.56
 
 
 #include <stdio.h>
@@ -11,34 +12,51 @@
 int main() {
     printf("It's Baran's first C assignment! \n\n");
 
-    float a = 5;
-    float b = 16;
-    float c = 4;
-    
-    float D = (b * b) - (4 * a * c);
-    float x1, x2, rp, ip, r1, r2;
+    double a,b,c,x1,x2,rp,ip,r1,r2,D;
+    int isReal;
 
-    printf("Delta is: %f \n\n", D);
+    printf("Enter the value of a: ");
+    scanf("%lf", &a);
+    printf("Enter the value of b: ");
+    scanf("%lf", &b);
+    printf("Enter the value of c: ");
+    scanf("%lf", &c);
 
-    // True path in flowchart 
+    D = (b * b) - (4 * a * c);
+
+    printf("\nDelta is: %.3lf \n", D);
+
+    // True path in flowchart
     if (D >= 0) {
-        printf("Delta >= 0 \n");
+        printf("Delta higher than or equal to 0 \n\n");
 
         r1 = (-b + sqrt(D)) / (2 * a);
         r2 = (-b - sqrt(D)) / (2 * a);
+
+        isReal = 1;
     }
-    
+
     // false path in flowchart
     else {
+        printf("\nThere are no real roots!\n\nImaginary roots are;");
         ip = -b / (2 * a);
         rp = sqrt(-D)/(2*a);
-        
-        printf("x1 %f + j%f \n", (rp, ip));
-        printf("x1 %f - j%f \n", (rp, ip));
-        
+
+        isReal = 0;
+
+        printf("\n x1  %.4lf + %.4f j", ip, rp);
+        printf("\n x2  %.4lf - %.4f j", ip, rp);
     }
-    
-    //these two of lines should be placed under first if statement but I coded what flowchart pictured.
-    printf("\n\nReal root 1 : %f \n", r1);        
-    printf("Real root 2 : %f \n", r2);
+
+    if (isReal == 1) {
+        if (r1 == r2) {
+            printf("One real root calculated \nIt's %.3lf", r1);
+        }
+        else {
+            printf("\nReal root 1 : %.3lf", r1);
+            printf("\nReal root 2 : %.3lf", r2);
+        }
+    }
  }
+
+
